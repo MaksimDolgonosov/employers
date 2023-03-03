@@ -7,6 +7,13 @@ import EmployersList from "../employers-list/employers-list";
 import EmployersAddForm from "../employers-add-form/employers-add-form";
 
 const App = () => {
+    const data = [
+        { name: "John C.", salary: 1800 },
+        { name: "Mike M.", salary: 3000 },
+        { name: "Alex S.", salary: 5000 },
+    ]
+
+
     return (
         <div className="App">
             <AppInfo />
@@ -14,8 +21,8 @@ const App = () => {
                 <SearchPanel />
                 <AppFilter />
             </div>
-            <EmployersList/>
-            <EmployersAddForm/>
+            <EmployersList data={data} />
+            <EmployersAddForm />
         </div>
     )
 }
