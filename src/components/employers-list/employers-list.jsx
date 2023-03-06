@@ -1,12 +1,12 @@
 import EmployersListItem from "../employers-list-item/employers-list-item"
 import "./employers-list.css"
 
-const EmployersList = ({ data }) => {
+const EmployersList = ({ data, onDelete }) => {
 
     const elements = data.map(item => {
         const { id, ...itemProps } = item;
-        // return <EmployersListItem name={item.name} salary={item.salary} increase={item.increase} id={item.id}/>
-        return <EmployersListItem {...itemProps} key={id} />
+        // return <EmployersListItem name={item.name} salary={item.salary} increase={item.increase} key={item.id}/>
+        return <EmployersListItem {...itemProps} key={id} onDelete={() => onDelete(id)} />
     })
     return (
         <ul className="app-list list-group">
