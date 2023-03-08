@@ -18,13 +18,31 @@ class App extends Component {
                 { name: "Alex S.", salary: 5000, increase: true, id: 3 },
             ]
         }
+        this.maxId = 4;
     }
 
-    deleteItem=(id)=>{
-        console.log(id)
-        // this.setState(({data})=>{
-        //     console.log(data.id)
-        // })
+    editItem = (e) => {
+        e.preventDefault();
+        console.log(e.target);
+        console.log(e.target.name);
+        console.log(e.target.salary);
+
+        this.setState(({ data }) => {
+            // let newData = data.push({ name: e.target.name, salary: 2000, increase: true, id: this.maxId })
+            return {
+                data: [...data, { name: e.target.name, salary: e.target.salary, increase: true, id: this.maxId }]
+            }
+        })
+
+        this.maxId++;
+    }
+
+    deleteItem = (id) => {
+        this.setState(({ data }) => {
+            return {
+                data: data.filter(item => item.id !== id)
+            }
+        })
     }
 
     render() {
@@ -39,7 +57,8 @@ class App extends Component {
                 <EmployersList
                     data={data}
                     onDelete={this.deleteItem} />
-                <EmployersAddForm />
+                <EmployersAddForm
+                    onEdit={this.editItem} />
             </div>
         )
     }
