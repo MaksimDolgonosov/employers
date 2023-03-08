@@ -21,16 +21,14 @@ class App extends Component {
         this.maxId = 4;
     }
 
-    editItem = (e) => {
-        e.preventDefault();
-        console.log(e.target);
-        console.log(e.target.name);
-        console.log(e.target.salary);
+    editItem = (name, salary) => {
+
+        console.log(name);
+        console.log(salary);
 
         this.setState(({ data }) => {
-            // let newData = data.push({ name: e.target.name, salary: 2000, increase: true, id: this.maxId })
             return {
-                data: [...data, { name: e.target.name, salary: e.target.salary, increase: true, id: this.maxId }]
+                data: [...data, { name: name, salary: salary, increase: true, id: this.maxId }]
             }
         })
 
